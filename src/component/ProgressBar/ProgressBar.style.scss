@@ -1,0 +1,13 @@
+.ProgressBar{
+    &-Wrapper{
+        background: var(--breadcrumbs-background);
+        min-height: var(--breadcrumbs-height);
+        padding-top: 30px;
+        padding-bottom: 30px;
+        justify-content: space-around;
+        align-items: center;
+        display: flex;
+        padding-left: 30vw;
+        padding-right: 30vw;
+    }
+}

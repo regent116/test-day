@@ -1,0 +1,61 @@
+:root {
+    --borderWidth: 2px;
+    --height: 16px;
+    --width: 9px;
+    --borderColor: #ffffff;
+    --itemColor: #c0c0c0;
+    --itemContentColor: #8d8d8d;
+    --titleColor: #141414;
+  }
+
+.ProgressBarItem{
+    &-Wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 15px;
+    }
+    &-Item{
+        height: 35px;
+        width: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: var(--itemColor);
+        font-family: "Muli", sans-serif;
+        color: var(--itemContentColor);
+        font-weight: 1000;
+        font-size: 1.4rem;
+        transition: background-color 100ms;
+        transition-timing-function: cubic-bezier(0.000, 0.000, 0.165, 0.980);
+        
+        &_content{
+            transform: translateY(2px)
+        }
+
+        &_isActive{
+            background: var(--primary-base-color);
+        }
+    }
+    &-Title{
+        font-family: "Muli", sans-serif;
+        font-weight: 1000;
+        font-size: 1.4rem;
+        text-transform: capitalize;
+        color: var(--itemContentColor);
+
+        &_isActive{
+            color: var(--titleColor);
+        }
+    }
+
+    &-CheckMark{
+        display: inline-block;
+        transform: translateY(-2px) rotate(45deg);
+        height: var(--height);
+        width: var(--width);
+        border-bottom: var(--borderWidth) solid var(--borderColor);
+        border-right: var(--borderWidth) solid var(--borderColor);
+    }
+}
