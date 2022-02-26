@@ -3,44 +3,54 @@ import { PureComponent } from 'react';
 import './ProgressBarItem.style';
 
 export class ProgressBarItem extends PureComponent {
+    static propTypes = {
+        isActive: PropTypes.bool,
+        stepId: PropTypes.number.isRequired,
+        title: PropTypes.string
+    };
+
+    static defaultProps = {
+        isActive: false,
+        stepId: 0,
+        title: ''
+    }
+
     constructor(props){
         super(props);
     }
 
     renderItemContent = () => {
-        const { step, stepId } = this.props;
-        const isActive = step >= stepId ? true : false;
+        const { isActive, stepId } = this.props;
         const content = stepId + 1;
 
         if(isActive === false) {
-            return <div block="ProgressBarItem" elem="Item_content">{content}</div>
+            return <div block="ProgressBarItem" elem="Item_content">{ content }</div>
         } else {
             return <div block="ProgressBarItem" elem="CheckMark" />
         }
     }
 
     renderContent = () => {
-        const { step, stepId, title } = this.props;
-        const isActive = step >= stepId ? true : false;
-
+        const { isActive, title } = this.props;
+        
         return(
             <>
                 <div
                     block="ProgressBarItem"
                     elem="Item"
-                    mods={ {isActive} }  
+                    mods={ { isActive } }  
                 >
-                    {this.renderItemContent()}
+                    { this.renderItemContent() }
                 </div>
                 <div
                     block="ProgressBarItem"
                     elem="Title"
-                    mods= { {isActive} }
+                    mods= { { isActive } }
                 >
-                    {title}
+                    { title }
                 </div>
             </>
-        )
+        );
 
     }
 
@@ -50,9 +60,9 @@ export class ProgressBarItem extends PureComponent {
               block="ProgressBarItem"
               elem="Wrapper"
             >
-                {this.renderContent()}
+                { this.renderContent() }
             </div>
-        )
+        );
     }
     
 }

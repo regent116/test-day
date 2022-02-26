@@ -1,13 +1,74 @@
+@mixin radius($geralTopLeft, $topRight : '', $bottomRight : '', $bottomLeft : '') {
+    border-radius: $geralTopLeft #{$topRight} #{$bottomRight} #{$bottomLeft};
+    -moz-border-radius: $geralTopLeft #{$topRight} #{$bottomRight} #{$bottomLeft};
+    -webkit-border-radius: $geralTopLeft #{$topRight} #{$bottomRight} #{$bottomLeft};
+    -ms-border-radius: $geralTopLeft #{$topRight} #{$bottomRight} #{$bottomLeft};
+}
+
+:root {
+    --StepBarDisabledColor: #dddddd;
+    --ProgressBarPaddingTop: 30px;
+    --ProgressBarPaddingBottom: 60px;
+  }
+
 .ProgressBar{
-    &-Wrapper{
+    &-Container{
         background: var(--breadcrumbs-background);
         min-height: var(--breadcrumbs-height);
-        padding-top: 30px;
-        padding-bottom: 30px;
-        justify-content: space-around;
+        padding-top: var(--ProgressBarPaddingTop);
+        padding-bottom: var(--ProgressBarPaddingBottom);
+        display: flex;
+        align-items: center;
+        column-gap: 15px;
+    }
+
+    &-Wrapper{
+        justify-content: center;
         align-items: center;
         display: flex;
-        padding-left: 30vw;
-        padding-right: 30vw;
+        column-gap: 15px;
+        overflow-y: visible;
     }
+
+    &-Left{
+        float: left;
+        width: 100%;
+    }
+
+    &-Right{
+        float: right;
+        width: 100%;
+    }
+
+    &-StepBar {
+        background-color: var(--StepBarDisabledColor);
+        min-width: 200px;
+        height: 5px;        
+        position: initial;
+        top: 30px;
+
+        @include radius(20px, 20px, 20px, 20px);
+
+        &_isActive{
+            background: var(--primary-base-color);
+            background: linear-gradient(to right, var(--primary-base-color) 50%, transparent 0);
+            background-size: 200% 100%;
+            background-position: right;
+            animation: StepBarFadeIn 2s forwards;
+        }
+
+        &_isActiveNoAnimation{
+            background: var(--primary-base-color);
+        }
+    }
+
+    @keyframes StepBarFadeIn {
+        100% {
+          background-position: left;
+        }
+      }
+
 }
+
+
+

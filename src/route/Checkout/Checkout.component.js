@@ -14,7 +14,7 @@ export class Checkout extends SourceCheckout {
         return (
             <main block="Checkout">
                 <ProgressBar
-                  checkoutStep={ checkoutStep }
+                  parentStep={ checkoutStep }
                   steps={ this.progressBarSteps }
                 />
                 <ContentWrapper
